@@ -16,14 +16,15 @@
    - Mac:     curl -LsSf https://astral.sh/uv/install.sh | sh
             brew install libomp
    - Windows: powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+   
    설치 후 터미널 재시작
 
 2. 레포 받기
-   git clone https://github.com/아이디/module1_ml_dl_basics.git
-   cd module1_ml_dl_basics
+   - git clone https://github.com/아이디/module1_ml_dl_basics.git
+   - cd module1_ml_dl_basics
 
 3. 환경 만들기
-   uv sync
+   - uv sync
 
 4. VS Code로 이 폴더를 열고, 노트북 오른쪽 위 커널 선택에서
-   "module1-ml-dl-basics (Python 3.11)" 선택
+   - "module1-ml-dl-basics (Python 3.11)" 선택
