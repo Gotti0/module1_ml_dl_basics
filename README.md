@@ -13,9 +13,9 @@
 
 ## 환경 세팅
 1. uv 설치 (한 번만)
-   Mac:     curl -LsSf https://astral.sh/uv/install.sh | sh
+   - Mac:     curl -LsSf https://astral.sh/uv/install.sh | sh
             brew install libomp
-   Windows: powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+   - Windows: powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
    설치 후 터미널 재시작
 
 2. 레포 받기
