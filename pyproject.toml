@@ -30,3 +30,10 @@ module1-ml-dl-basics = "module1_ml_dl_basics:main"
 [build-system]
 requires = ["uv_build>=0.13.1,<0.14.0"]
 build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "kiwipiepy>=0.24.1",
+    "pillow>=12.3.0",
+    "pymupdf>=2.1",
+]
