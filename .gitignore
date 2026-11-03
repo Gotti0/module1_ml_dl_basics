@@ -12,3 +12,8 @@ wheels/
 *.pyc
 .env
 data/
+
+# 교안 저작권 보호: 원본과 변환 결과는 공개 저장소에 올리지 않는다
+docs/notion/
+docs/notion-md/
+.cache/
