@@ -422,8 +422,16 @@ def replace_images(text, pending, counts):
     return IMAGE_TOKEN_RE.sub(replace, text)
 
 
+def previous_report(path, only):
+    """일부 문서만 처리할 때는 나머지 문서의 기록을 지우지 않도록 기존 보고서 위에 쓴다.
+
+    전체 실행은 빈 보고서에서 시작해 사라진 PDF의 기록이 남지 않게 한다.
+    """
+    return json.loads(path.read_text(encoding="utf-8")) if only and path.exists() else {}
+
+
 def cmd_apply(args):
-    report = {}
+    report = previous_report(OUT_DIR / "_apply_report.json", args.only)
     kiwi = Kiwi()
     for pdf in select_pdfs(args.only):
         did = doc_id(pdf)
@@ -606,7 +614,8 @@ def cmd_verify(args):
             **{k: entry[k] for k in ("math_pages", "math_pending", "images", "unplaced_images", "diagrams", "images_removed")},
             "math_failed_pages": sorted(int(k) for k in entry["math_failed"]),
         }
-    (OUT_DIR / "_verify_report.json").write_text(json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8")
+    merged = previous_report(OUT_DIR / "_verify_report.json", args.only) | results
+    (OUT_DIR / "_verify_report.json").write_text(json.dumps(merged, ensure_ascii=False, indent=1), encoding="utf-8")
     review_page(apply_report)
     for name, r in results.items():
         print(name[:36], json.dumps({k: v for k, v in r.items() if k not in ("images",)}, ensure_ascii=False))
